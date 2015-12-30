@@ -12,6 +12,12 @@
 		8EB8CC431C327FAC009D1A8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8CC411C327FAC009D1A8A /* Main.storyboard */; };
 		8EB8CC451C327FAC009D1A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8CC441C327FAC009D1A8A /* Assets.xcassets */; };
 		8EB8CC481C327FAC009D1A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8CC461C327FAC009D1A8A /* LaunchScreen.storyboard */; };
+		8EB8CC521C328113009D1A8A /* fx_guide_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8CC4F1C328113009D1A8A /* fx_guide_arrow_down.png */; };
+		8EB8CC531C328113009D1A8A /* fx_livRm_guide_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8CC501C328113009D1A8A /* fx_livRm_guide_ok.png */; };
+		8EB8CC541C328113009D1A8A /* fx_my_attention_guide_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8CC511C328113009D1A8A /* fx_my_attention_guide_arrow.png */; };
+		8EB8CC581C32811C009D1A8A /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8CC561C32811C009D1A8A /* GuideView.m */; };
+		8EB8CC591C32811C009D1A8A /* meizi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EB8CC571C32811C009D1A8A /* meizi.jpg */; };
+		8EB8CC5C1C32824E009D1A8A /* UserGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8CC5B1C32824E009D1A8A /* UserGuideView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,13 @@
 		8EB8CC441C327FAC009D1A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EB8CC471C327FAC009D1A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EB8CC491C327FAC009D1A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EB8CC4F1C328113009D1A8A /* fx_guide_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx_guide_arrow_down.png; sourceTree = "<group>"; };
+		8EB8CC501C328113009D1A8A /* fx_livRm_guide_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx_livRm_guide_ok.png; sourceTree = "<group>"; };
+		8EB8CC511C328113009D1A8A /* fx_my_attention_guide_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx_my_attention_guide_arrow.png; sourceTree = "<group>"; };
+		8EB8CC551C32811C009D1A8A /* GuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
+		8EB8CC561C32811C009D1A8A /* GuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
+		8EB8CC571C32811C009D1A8A /* meizi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meizi.jpg; sourceTree = "<group>"; };
+		8EB8CC5B1C32824E009D1A8A /* UserGuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGuideView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +51,7 @@
 		8EB8CC311C327FAC009D1A8A = {
 			isa = PBXGroup;
 			children = (
+				8EB8CC5A1C32824E009D1A8A /* Source */,
 				8EB8CC3C1C327FAC009D1A8A /* UserGuideViewDemo */,
 				8EB8CC3B1C327FAC009D1A8A /* Products */,
 			);
@@ -54,6 +68,12 @@
 		8EB8CC3C1C327FAC009D1A8A /* UserGuideViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8EB8CC551C32811C009D1A8A /* GuideView.h */,
+				8EB8CC561C32811C009D1A8A /* GuideView.m */,
+				8EB8CC571C32811C009D1A8A /* meizi.jpg */,
+				8EB8CC4F1C328113009D1A8A /* fx_guide_arrow_down.png */,
+				8EB8CC501C328113009D1A8A /* fx_livRm_guide_ok.png */,
+				8EB8CC511C328113009D1A8A /* fx_my_attention_guide_arrow.png */,
 				8EB8CC3D1C327FAC009D1A8A /* AppDelegate.swift */,
 				8EB8CC3F1C327FAC009D1A8A /* ViewController.swift */,
 				8EB8CC411C327FAC009D1A8A /* Main.storyboard */,
@@ -62,6 +82,14 @@
 				8EB8CC491C327FAC009D1A8A /* Info.plist */,
 			);
 			path = UserGuideViewDemo;
+			sourceTree = "<group>";
+		};
+		8EB8CC5A1C32824E009D1A8A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8EB8CC5B1C32824E009D1A8A /* UserGuideView.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,8 +150,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB8CC591C32811C009D1A8A /* meizi.jpg in Resources */,
 				8EB8CC481C327FAC009D1A8A /* LaunchScreen.storyboard in Resources */,
+				8EB8CC541C328113009D1A8A /* fx_my_attention_guide_arrow.png in Resources */,
+				8EB8CC531C328113009D1A8A /* fx_livRm_guide_ok.png in Resources */,
 				8EB8CC451C327FAC009D1A8A /* Assets.xcassets in Resources */,
+				8EB8CC521C328113009D1A8A /* fx_guide_arrow_down.png in Resources */,
 				8EB8CC431C327FAC009D1A8A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB8CC581C32811C009D1A8A /* GuideView.m in Sources */,
 				8EB8CC401C327FAC009D1A8A /* ViewController.swift in Sources */,
+				8EB8CC5C1C32824E009D1A8A /* UserGuideView.swift in Sources */,
 				8EB8CC3E1C327FAC009D1A8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,10 +283,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = UserGuideViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morenotepad.UserGuideViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -260,7 +297,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = UserGuideViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morenotepad.UserGuideViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,6 +325,7 @@
 				8EB8CC4E1C327FAC009D1A8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
