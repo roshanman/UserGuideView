@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,37 +16,99 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="X80-y0-LsR">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-zf-b8h">
+                                <rect key="frame" x="254" y="134" width="30" height="30"/>
+                                <state key="normal" title="点赞"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0l-vu-18o">
+                                <rect key="frame" x="254" y="184" width="30" height="30"/>
+                                <state key="normal" title="吐槽"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tuZ-BV-Qac">
+                                <rect key="frame" x="16" y="376" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="l0K-YH-VK8"/>
+                                    <constraint firstAttribute="height" constant="128" id="nJF-IH-Ivb"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="X80-y0-LsR" secondAttribute="bottom" id="0O0-ZU-3JI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tuZ-BV-Qac" secondAttribute="bottom" constant="20" id="9FH-Hy-jB7"/>
+                            <constraint firstItem="tuZ-BV-Qac" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Gmh-DK-Vk4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VUr-zf-b8h" secondAttribute="trailing" constant="20" id="Qdq-p2-BAI"/>
+                            <constraint firstItem="i0l-vu-18o" firstAttribute="top" secondItem="VUr-zf-b8h" secondAttribute="bottom" constant="20" id="Rjk-Rf-pU2"/>
+                            <constraint firstItem="VUr-zf-b8h" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="XmU-hf-oSG"/>
+                            <constraint firstAttribute="trailing" secondItem="X80-y0-LsR" secondAttribute="trailing" id="chS-ZR-sJH"/>
+                            <constraint firstItem="i0l-vu-18o" firstAttribute="centerX" secondItem="VUr-zf-b8h" secondAttribute="centerX" id="qFL-jB-2Qj"/>
+                            <constraint firstItem="X80-y0-LsR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="yYq-OU-reT"/>
+                            <constraint firstItem="X80-y0-LsR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yeA-zw-wHG"/>
+                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item1" id="pvj-n4-90M"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="aTt-XB-i4Q"/>
+                        <barButtonItem systemItem="trash" id="6hX-uv-WYu"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="IYR-at-ipE"/>
+                        <barButtonItem title="Item3" id="aFf-2X-ToD"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="nPZ-nG-Kjr">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="izw-ry-kcv">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="search" id="Ih4-Q3-zcn"/>
+                            <barButtonItem title="Item" id="Kev-M9-pc5"/>
+                        </leftBarButtonItems>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="msB-M6-9dJ">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                        </button>
-                        <barButtonItem key="rightBarButtonItem" title="Hello" id="6SG-e0-edr"/>
+                            <segments>
+                                <segment title="First"/>
+                                <segment title="Second"/>
+                            </segments>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="招呼" id="6SG-e0-edr"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="izw-ry-kcv" id="a4b-cW-Feu"/>
+                        <outlet property="helloBarItem" destination="6SG-e0-edr" id="kGp-dQ-r5X"/>
+                        <outlet property="item1" destination="pvj-n4-90M" id="Km7-DS-UFZ"/>
+                        <outlet property="item2" destination="6hX-uv-WYu" id="znw-aA-L2R"/>
+                        <outlet property="item3" destination="aFf-2X-ToD" id="Q9c-Xg-Xxm"/>
+                        <outlet property="titleView" destination="msB-M6-9dJ" id="blk-aa-CcD"/>
+                        <outlet property="吐槽" destination="i0l-vu-18o" id="Nn5-k3-cA2"/>
+                        <outlet property="描述框" destination="tuZ-BV-Qac" id="Ahp-4f-bEa"/>
+                        <outlet property="点赞" destination="VUr-zf-b8h" id="NaE-XS-1SO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424" y="275"/>
+            <point key="canvasLocation" x="87" y="275"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ajE-mK-y7r">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hor-dY-pKJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Hor-dY-pKJ" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YiS-Yy-nvx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Nlo-e4-MCv">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8kI-OY-pLC"/>
                     </connections>
@@ -54,4 +118,7 @@
             <point key="canvasLocation" x="-335" y="275"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="3.jpeg" width="533" height="800"/>
+    </resources>
 </document>
