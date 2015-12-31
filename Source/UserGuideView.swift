@@ -20,17 +20,22 @@ protocol UserGuideViewProtocol {
 }
 
 class UserGuideContent : NSObject {
-    private var placeOfBarItem:UIBarButtonItem?
-    private var placeOfView:UIView?
-    private var placeOfRect:CGRect?
+    private var toolBarItem:UIBarButtonItem?
+    private var naviBarItem:UIBarButtonItem?
+    private var view:UIView?
+    private var rect:CGRect?
     private var guideText:String!
+    private var barItemIndex:Int?
     
     var vc:UIViewController? // don't set this param youself, i need this to computer baritem position
     
-    var rect:CGRect {
+    var guideRect:CGRect {
         get {
-            return (rectOfBarItem != CGRectZero) ? (rectOfBarItem) :
-                (rectOfView != CGRectZero ? rectOfView : (placeOfRect ?? CGRectZero))
+            let rt1 = rectOfBarItem
+            let rt2 = rectOfView
+            let rt3 = rect
+            
+            return (rt1 != CGRectZero) ? (rt1) : (rt2 != CGRectZero ? rt2 : (rt3 ?? CGRectZero))
         }
     }
     
@@ -42,86 +47,102 @@ class UserGuideContent : NSObject {
     
     private var rectOfBarItem:CGRect {
         get {
-            guard let v = vc, item = placeOfBarItem else { return CGRectZero }
+            guard let v = vc else { return CGRectZero }
             
             if let nav = v.navigationController {
-                if !nav.navigationBarHidden {
-                    let bar = nav.navigationBar
-                    if let i = getNaviBarItemIndex(bar, barItem: item) {
-                        if let views = getNaviBarButtons(bar) {
-                            let aView = views[i]
-                            return aView.convertRect(aView.bounds, toView: nil)
+                if let item = toolBarItem {
+                    if !nav.toolbarHidden {
+                        let bar = nav.toolbar
+                        if let i = getToolBarItemIndex(bar, barItem: item) {
+                            if let views = getToolBarbuttons(bar) {
+                                if i >= views.count { return CGRectZero }
+                                
+                                let aView = views[i]
+                                return aView.convertRect(aView.bounds, toView: nil)
+                            }
                         }
                     }
                 }
                 
-                if !nav.toolbarHidden {
-                    let bar = nav.toolbar
-                    if let i = getToolBarItemIndex(bar, barItem: item) {
-                        if let views = getToolBarbuttons(bar) {
-                            let aView = views[i]
-                            return aView.convertRect(aView.bounds, toView: nil)
+                if !nav.navigationBarHidden {
+                    if let item = naviBarItem {
+                        let bar = nav.navigationBar
+                        if let i = getNaviBarItemIndex(bar, barItem: item) {
+                            if let views = getNaviBarButtons(bar) {
+                                if i >= views.count { return CGRectZero }
+                                
+                                let aView = views[i]
+                                return aView.convertRect(aView.bounds, toView: nil)
+                            }
                         }
                     }
                 }
             }
-
+            
             return CGRectZero
         }
     }
     
     private var rectOfView:CGRect {
         get {
-            guard let v = self.placeOfView else { return CGRectZero }
+            guard let v = self.view else { return CGRectZero }
             
             return v.convertRect(v.bounds, toView: nil)
         }
     }
     
-    private init(text:String!, barItem:UIBarButtonItem!, view:UIView!, rect:CGRect!) {
-        self.placeOfBarItem = barItem
-        self.placeOfRect = rect
-        self.placeOfView = view
+    private init(text:String!, tooBarItem:UIBarButtonItem!, naviBarItem:UIBarButtonItem!, view:UIView!, rect:CGRect!, index:Int?) {
+        self.toolBarItem = tooBarItem
+        self.naviBarItem = naviBarItem
+        self.barItemIndex = index
+        self.rect = rect
+        self.view = view
         self.guideText = text
         
         super.init()
     }
     
-    convenience init(text:String!, barItem:UIBarButtonItem!) {
-        self.init(text: text, barItem:barItem, view:nil, rect:CGRectZero)
+    convenience init(text:String!, toolBarItem:UIBarButtonItem!, itemIndex:Int) {
+        self.init(text: text, tooBarItem:toolBarItem, naviBarItem:nil, view:nil, rect:nil, index:itemIndex)
+    }
+    
+    convenience init(text:String!, naviBarItem:UIBarButtonItem!, itemIndex:Int) {
+        self.init(text: text, tooBarItem:nil, naviBarItem:naviBarItem, view:nil, rect:nil, index:itemIndex)
     }
     
     convenience init(text:String!, view:UIView!) {
-        self.init(text: text, barItem:nil, view:view, rect:CGRectZero)
+        self.init(text: text, tooBarItem:nil, naviBarItem:nil, view:view, rect:nil, index:nil)
     }
 
     convenience init(text:String!, rect:CGRect!) {
-        self.init(text: text, barItem:nil, view:nil, rect:rect)
+        self.init(text: text, tooBarItem:nil, naviBarItem:nil, view:nil, rect:rect, index:nil)
     }
 }
 
 extension UserGuideContent {
     func getNaviBarItemIndex(bar:UINavigationBar, barItem:UIBarButtonItem) -> Int? {
-        guard let items = bar.topItem else { return nil }
-        for (index, item) in ((items.leftBarButtonItems ?? []) + (items.rightBarButtonItems ?? [])).enumerate() {
-            if item === barItem {
-                return index
-            }
-        }
-        
-        return nil
+        return barItemIndex
+//        guard let items = bar.topItem else { return nil }
+//        for (index, item) in ((items.leftBarButtonItems ?? []) + (items.rightBarButtonItems ?? [])).enumerate() {
+//            if item === barItem {
+//                return index
+//            }
+//        }
+//        
+//        return nil
     }
     
     func getToolBarItemIndex(bar:UIToolbar, barItem:UIBarButtonItem) -> Int? {
-        guard let items = bar.items else { return nil }
-        
-        for (index, item) in items.enumerate() {
-            if item === barItem {
-                return index
-            }
-        }
-        
-        return nil
+        return barItemIndex
+//        guard let items = bar.items else { return nil }
+//        
+//        for (index, item) in items.enumerate() {
+//            if item === barItem {
+//                return index
+//            }
+//        }
+//        
+//        return nil
     }
     
     func getNaviBarButtons(bar:UINavigationBar) -> [UIView]? {
@@ -238,14 +259,14 @@ class UserGuideView : UIView {
     }
 
     private func setImageOfContent(content:UserGuideContent) {
-        let rt = content.rect
+        let rt = content.guideRect
         let midY = CGRectGetMidY(rt)
         let mid  = CGRectGetMidY(screenRect)
         
         if mid > midY {
-            imageView.image = UIImage(named: "fx_my_attention_guide_arrow")
+            imageView.image = UIImage(named: "UserGuideView.bundle/fx_my_attention_guide_arrow")
         } else {
-            imageView.image = UIImage(named: "fx_guide_arrow_down")
+            imageView.image = UIImage(named: "UserGuideView.bundle/fx_guide_arrow_down")
         }
         
         imageView.frame.size = imageView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
@@ -262,18 +283,18 @@ class UserGuideView : UIView {
         
         switch mode {
         case .Oval:
-            path = UIBezierPath(ovalInRect: content.rect)
+            path = UIBezierPath(ovalInRect: content.guideRect)
         case .Rect:
-            path = UIBezierPath(rect: content.rect)
+            path = UIBezierPath(rect: content.guideRect)
         case .RoundRect:
-            path = UIBezierPath(roundedRect: content.rect, cornerRadius: 4)
+            path = UIBezierPath(roundedRect: content.guideRect, cornerRadius: 4)
         }
         
         return path
     }
     
     private func placeViews(content:UserGuideContent) {
-        let rt = content.rect
+        let rt = content.guideRect
         let midY = CGRectGetMidY(rt)
         let mid  = CGRectGetMidY(screenRect)
 
