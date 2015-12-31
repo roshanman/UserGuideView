@@ -4,10 +4,6 @@ iOS user guide view
 ## Demo
 <img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/demo.gif" />
 
-## How to calc baritem index
-<img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/1.jpg" />
-<img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/2.jpg" />
-
 ## Installation
 
 ```ruby
@@ -56,6 +52,11 @@ pod 'UserGuideView', :git => 'https://github.com/Jameson-zxm/UserGuideView.git'
     }
 
 ```
+
+## How to calc baritem index
+<img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/1.jpg" />
+
+<img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/2.jpg" />
 
 
 ## Contact me
