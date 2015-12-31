@@ -4,6 +4,11 @@ iOS user guide view
 ## Demo
 <img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/demo.gif" />
 
+## Requirements
+* Swift2+
+* Xcode 7+
+* iOS8+
+
 ## Installation
 
 ```ruby
