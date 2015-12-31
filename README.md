@@ -4,7 +4,7 @@ iOS user guide view
 ## Demo
 <img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/demo.gif" />
 
-## How to calu baritem index
+## How to calc baritem index
 <img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/1.jpg" />
 <img src="https://github.com/Jameson-zxm/UserGuideView/blob/master/2.jpg" />
 
